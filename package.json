@@ -1,0 +1,19 @@
+{
+  "name": "nextjs-rendering-lab",
+  "private": true,
+  "scripts": {
+    "mock": "pnpm --filter @lab/mock-api dev",
+    "dev": "concurrently -n api,classic,modern -c cyan,green,magenta \"pnpm --filter @lab/mock-api dev\" \"pnpm --filter classic dev\" \"pnpm --filter modern dev\"",
+    "dev:classic": "concurrently -n api,classic -c cyan,green \"pnpm --filter @lab/mock-api dev\" \"pnpm --filter classic dev\"",
+    "dev:modern": "concurrently -n api,modern -c cyan,magenta \"pnpm --filter @lab/mock-api dev\" \"pnpm --filter modern dev\"",
+    "build": "node scripts/with-mock.mjs sh -c \"pnpm --filter classic build && pnpm --filter modern build\"",
+    "start:prod": "concurrently -n api,classic,modern -c cyan,green,magenta \"pnpm --filter @lab/mock-api start\" \"pnpm --filter classic start\" \"pnpm --filter modern start\"",
+    "verify": "bash scripts/verify-all.sh",
+    "test": "pnpm --filter @lab/learn-ui test && pnpm --filter classic test",
+    "e2e": "pnpm build && pnpm --filter classic e2e && pnpm --filter modern e2e"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "packageManager": "pnpm@10.12.1"
+}

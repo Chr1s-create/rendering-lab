@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@source "../../../packages/learn-ui/src";
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-zinc-950 text-zinc-100 antialiased;
+}
+
+pre {
+  @apply overflow-x-auto rounded-md border border-zinc-800 bg-zinc-900 p-3 text-xs leading-relaxed;
+}
+
+code {
+  @apply font-mono;
+}
